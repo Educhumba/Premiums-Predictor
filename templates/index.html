@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Umma Insurance Premium Predictor</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Umma Insurance Premium Predictor</h1>
+
+        <form method="POST">
+            <label>Car Value:</label>
+            <input type="number" name="car_value" step="0.01" required>
+
+            <label>Car Age (Years):</label>
+            <input type="number" name="car_age" step="0.1" required>
+
+            <label>Owner Age:</label>
+            <input type="number" name="owner_age" required>
+
+            <label>Vehicle Type:</label>
+            <select name="vehicle_type" required>
+                <option value="SUV">SUV</option>
+                <option value="Sedan">Sedan</option>
+                <option value="Truck">Pickup</option>
+            </select>
+
+            <label>Use Type:</label>
+            <select name="use_type" required>
+                <option value="Personal">Personal</option>
+                <option value="Commercial">Commercial</option>
+            </select>
+
+            <label>Ownership Count:</label>
+            <input type="number" name="ownership_count" required>
+
+            <label>Accident History:</label>
+            <select name="accident_history" required>
+                <option value="True">Yes</option>
+                <option value="False">No</option>
+            </select>
+
+            <button type="submit">Predict Premium</button>
+        </form>
+
+        {% if prediction is not none %}
+            <div class="result">
+                <h2>The Premium is: <span>KES {{ prediction }}</span></h2>
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
